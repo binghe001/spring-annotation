@@ -48,4 +48,18 @@ public class SpringBeanTest {
         Arrays.stream(names).forEach(System.out::println);
 
     }
+
+    @Test
+    public void testComponentScanByXml(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        String[] names = context.getBeanDefinitionNames();
+        Arrays.stream(names).forEach(System.out::println);
+    }
+
+    @Test
+    public void testComponentScanByAnnotation(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig.class);
+        String[] names = context.getBeanDefinitionNames();
+        Arrays.stream(names).forEach(System.out::println);
+    }
 }
