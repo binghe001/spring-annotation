@@ -16,10 +16,9 @@
 package io.mykit.spring.plugins.register.config;
 
 import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.filter.MyTypeFilter;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
 /**
  * @author binghe
@@ -37,12 +36,17 @@ import org.springframework.stereotype.Service;
 //        @Filter(type = FilterType.ANNOTATION, classes = {Service.class})
 //}, useDefaultFilters = false)
 
+//@ComponentScans(value = {
+//        @ComponentScan(value = "io.mykit.spring", includeFilters = {
+//                @Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+//        }, useDefaultFilters = false),
+//        @ComponentScan(value = "io.mykit.spring", includeFilters = {
+//                @Filter(type = FilterType.ANNOTATION, classes = {Service.class})
+//        }, useDefaultFilters = false)
+//})
 @ComponentScans(value = {
         @ComponentScan(value = "io.mykit.spring", includeFilters = {
-                @Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
-        }, useDefaultFilters = false),
-        @ComponentScan(value = "io.mykit.spring", includeFilters = {
-                @Filter(type = FilterType.ANNOTATION, classes = {Service.class})
+                @Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
         }, useDefaultFilters = false)
 })
 public class PersonConfig {
