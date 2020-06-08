@@ -27,12 +27,36 @@ import java.io.Serializable;
  * @version 1.0.0
  * @description 测试实体类
  */
-@Data
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@ToString
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Person implements Serializable {
     private static final long serialVersionUID = 7387479910468805194L;
     private String name;
     private Integer age;
+
+    public Person() {
+    }
+
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 }

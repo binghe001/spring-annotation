@@ -17,12 +17,16 @@ package io.mykit.spring.test;
 
 import io.mykit.spring.bean.Person;
 import io.mykit.spring.plugins.register.config.PersonConfig;
+import io.mykit.spring.plugins.register.config.PersonConfig2;
+import io.mykit.spring.plugins.register.config.PersonConfig3;
+import io.mykit.spring.plugins.register.scope.ThreadScope;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author binghe
@@ -61,5 +65,40 @@ public class SpringBeanTest {
         ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig.class);
         String[] names = context.getBeanDefinitionNames();
         Arrays.stream(names).forEach(System.out::println);
+    }
+
+    @Test
+    public void testAnnotationConfig2(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig2.class);
+        //从Spring容器中获取到的对象默认是单实例的
+        Object person1 = context.getBean("person");
+        Object person2 = context.getBean("person");
+        System.out.println(person1 == person2);
+    }
+    @Test
+    public void testAnnotationConfig3(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig2.class);
+        Object person1 = context.getBean("person");
+        Object person2 = context.getBean("person");
+        System.out.println(person1 == person2);
+    }
+    @Test
+    public void testAnnotationConfig4(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig3.class);
+        //向容器中注册自定义的scope
+        context.getBeanFactory().registerScope(ThreadScope.THREAD_SCOPE, new ThreadScope());
+
+        //使用容器获取bean
+        for (int i = 0; i < 2; i++) {
+            new Thread(() -> {
+                System.out.println(Thread.currentThread() + "," + context.getBean("person"));
+                System.out.println(Thread.currentThread() + "," + context.getBean("person"));
+            }).start();
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
