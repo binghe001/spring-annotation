@@ -24,8 +24,11 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -110,5 +113,20 @@ public class SpringBeanTest {
         Person person1 = (Person) context.getBean("person");
         Person person2 = (Person) context.getBean("person");
         System.out.println(person1 == person2);
+    }
+
+    @Test
+    public void testAnnotationConfig6(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig2.class);
+        Environment environment = context.getEnvironment();
+        String osName = environment.getProperty("os.name");
+        System.out.println(osName);
+
+
+        String[] names = context.getBeanNamesForType(Person.class);
+        Arrays.stream(names).forEach(System.out::println);
+
+        Map<String, Person> beans = context.getBeansOfType(Person.class);
+        System.out.println(beans);
     }
 }

@@ -16,7 +16,10 @@
 package io.mykit.spring.plugins.register.config;
 
 import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.condition.LinuxCondition;
+import io.mykit.spring.plugins.register.condition.WindowsCondition;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
@@ -33,5 +36,17 @@ public class PersonConfig2 {
     public Person person(){
         System.out.println("给容器中添加Person....");
         return new Person("binghe002", 18);
+    }
+
+    @Conditional({WindowsCondition.class})
+    @Bean("binghe001")
+    public Person person01(){
+        return new Person("binghe001", 18);
+    }
+
+    @Conditional({LinuxCondition.class})
+    @Bean("binghe002")
+    public Person person02(){
+        return new Person("binghe002", 20);
     }
 }
