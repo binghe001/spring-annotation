@@ -15,7 +15,7 @@
  */
 package io.mykit.spring.test;
 
-import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.bean.Person;
 import io.mykit.spring.plugins.register.config.PersonConfig;
 import io.mykit.spring.plugins.register.config.PersonConfig2;
 import io.mykit.spring.plugins.register.config.PersonConfig3;
@@ -26,7 +26,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.Environment;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;

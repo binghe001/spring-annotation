@@ -15,7 +15,7 @@
  */
 package io.mykit.spring.plugins.register.config;
 
-import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.bean.Person;
 import io.mykit.spring.plugins.register.filter.MyTypeFilter;
 import org.springframework.context.annotation.*;
 import org.springframework.context.annotation.ComponentScan.Filter;

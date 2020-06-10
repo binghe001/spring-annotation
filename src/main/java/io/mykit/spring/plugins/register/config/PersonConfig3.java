@@ -15,7 +15,7 @@
  */
 package io.mykit.spring.plugins.register.config;
 
-import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

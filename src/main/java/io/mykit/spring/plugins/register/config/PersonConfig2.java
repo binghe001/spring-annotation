@@ -15,7 +15,7 @@
  */
 package io.mykit.spring.plugins.register.config;
 
-import io.mykit.spring.bean.Person;
+import io.mykit.spring.plugins.register.bean.Person;
 import io.mykit.spring.plugins.register.condition.LinuxCondition;
 import io.mykit.spring.plugins.register.condition.WindowsCondition;
 import org.springframework.context.annotation.Bean;

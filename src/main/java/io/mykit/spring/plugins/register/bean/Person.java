@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.mykit.spring.bean;
+package io.mykit.spring.plugins.register.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
