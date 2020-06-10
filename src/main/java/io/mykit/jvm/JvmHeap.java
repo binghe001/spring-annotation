@@ -13,26 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.mykit.spring.bean;
+package io.mykit.jvm;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author binghe
  * @version 1.0.0
- * @description 测试实体类
+ * @description Jvm堆实例
  */
-@Data
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class Person implements Serializable {
-    private static final long serialVersionUID = 7387479910468805194L;
-    private String name;
-    private Integer age;
+public class JvmHeap {
+
+    private byte[] bys = new byte[1024 * 100];
+
+    public static void main(String[] args) throws InterruptedException {
+        List<JvmHeap> list = new ArrayList<>();
+        while (true){
+            //死循环，内存是否会装满，这与内存区域有关
+            //使用new创建的对象会存放在JVM的堆内存中
+            //程序运行的时候会伴随GC，如果没有GC机制，最终的结果一定是OOM的
+            list.add(new JvmHeap());
+            Thread.sleep(1);
+        }
+    }
 }

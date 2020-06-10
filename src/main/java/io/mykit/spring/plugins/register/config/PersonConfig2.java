@@ -18,7 +18,7 @@ package io.mykit.spring.plugins.register.config;
 import io.mykit.spring.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Lazy;
 
 /**
  * @author binghe
@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class PersonConfig2 {
 
-    @Scope("prototype")
+    @Lazy
     @Bean("person")
     public Person person(){
         System.out.println("给容器中添加Person....");
