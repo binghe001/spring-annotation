@@ -15,13 +15,12 @@
  */
 package io.mykit.spring.plugins.register.config;
 
+import io.mykit.spring.plugins.register.bean.Department;
+import io.mykit.spring.plugins.register.bean.Employee;
 import io.mykit.spring.plugins.register.bean.Person;
 import io.mykit.spring.plugins.register.condition.LinuxCondition;
 import io.mykit.spring.plugins.register.condition.WindowsCondition;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.*;
 
 /**
  * @author binghe
@@ -29,6 +28,7 @@ import org.springframework.context.annotation.Lazy;
  * @description 测试@Scope注解设置的作用域
  */
 @Configuration
+@Import({Department.class, Employee.class})
 public class PersonConfig2 {
 
     @Lazy

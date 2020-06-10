@@ -128,4 +128,11 @@ public class SpringBeanTest {
         Map<String, Person> beans = context.getBeansOfType(Person.class);
         System.out.println(beans);
     }
+
+    @Test
+    public void testAnnotationConfig7(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig2.class);
+        String[] names = context.getBeanDefinitionNames();
+        Arrays.stream(names).forEach(System.out::println);
+    }
 }
