@@ -18,6 +18,7 @@ package io.mykit.spring.plugins.register.config;
 import io.mykit.spring.plugins.register.bean.Department;
 import io.mykit.spring.plugins.register.bean.Employee;
 import io.mykit.spring.plugins.register.bean.Person;
+import io.mykit.spring.plugins.register.bean.PersonFactoryBean;
 import io.mykit.spring.plugins.register.condition.LinuxCondition;
 import io.mykit.spring.plugins.register.condition.MyImportBeanDefinitionRegistrar;
 import io.mykit.spring.plugins.register.condition.WindowsCondition;
@@ -50,5 +51,11 @@ public class PersonConfig2 {
     @Bean("binghe002")
     public Person person02(){
         return new Person("binghe002", 20);
+    }
+
+
+    @Bean
+    public PersonFactoryBean personFactoryBean(){
+        return new PersonFactoryBean();
     }
 }

@@ -134,5 +134,14 @@ public class SpringBeanTest {
         ApplicationContext context = new AnnotationConfigApplicationContext(PersonConfig2.class);
         String[] names = context.getBeanDefinitionNames();
         Arrays.stream(names).forEach(System.out::println);
+
+        Object personFactoryBean1 = context.getBean("personFactoryBean");
+        Object personFactoryBean2 = context.getBean("personFactoryBean");
+        System.out.println("personFactoryBean1类型：" + personFactoryBean1.getClass());
+        System.out.println("personFactoryBean2类型：" + personFactoryBean2.getClass());
+        System.out.println(personFactoryBean1 == personFactoryBean2);
+
+        Object personFactoryBean3 = context.getBean("&personFactoryBean");
+        System.out.println("personFactoryBean3类型：" + personFactoryBean3.getClass());
     }
 }
