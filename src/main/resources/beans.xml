@@ -13,4 +13,6 @@
         <property name="name" value="binghe"></property>
         <property name="age" value="18"></property>
     </bean>
+
+    <bean id="student" class="io.mykit.spring.plugins.register.bean.Student" init-method="init" destroy-method="destroy"></bean>
 </beans>
