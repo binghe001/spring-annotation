@@ -15,6 +15,7 @@
  */
 package io.mykit.spring.test;
 
+import io.mykit.spring.plugins.register.config.AnimalConfig;
 import io.mykit.spring.plugins.register.config.LifeCircleConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,5 +34,30 @@ public class BeanLifeCircleTest {
         System.out.println("容器创建完成...");
         //context.getBean(Student.class);
         context.close();
+    }
+
+    @Test
+    public void testBeanLifeCircle02(){
+        //创建IOC容器
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AnimalConfig.class);
+        System.out.println("IOC容器创建完成...");
+        //关闭IOC容器
+        context.close();
+    }
+
+    @Test
+    public void testBeanLifeCircle03(){
+        //创建IOC容器
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AnimalConfig.class);
+        System.out.println("IOC容器创建完成...");
+        System.out.println("-------");
+        //调用时创建对象
+        Object bean = ctx.getBean("animal");
+        System.out.println("-------");
+        //调用时创建对象
+        Object bean1 = ctx.getBean("animal");
+        System.out.println("-------");
+        //关闭IOC容器
+        ctx.close();
     }
 }
