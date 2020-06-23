@@ -16,6 +16,7 @@
 package io.mykit.spring.plugins.register.config;
 
 import io.mykit.spring.plugins.register.bean.Animal;
+import io.mykit.spring.plugins.register.bean.Cat;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -34,5 +35,10 @@ public class AnimalConfig {
     @Scope("prototype")
     public Animal animal(){
         return new Animal();
+    }
+
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    public Cat cat(){
+        return new Cat();
     }
 }
