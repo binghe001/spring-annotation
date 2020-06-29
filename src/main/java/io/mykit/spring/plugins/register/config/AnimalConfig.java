@@ -37,7 +37,7 @@ public class AnimalConfig {
         return new Animal();
     }
 
-    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Bean
     public Cat cat(){
         return new Cat();
     }

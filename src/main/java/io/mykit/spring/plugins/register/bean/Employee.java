@@ -15,10 +15,23 @@
  */
 package io.mykit.spring.plugins.register.bean;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+
 /**
  * @author binghe
  * @version 1.0.0
- * @description 测试@Import注解的bean
+ * @description 测试ApplicationContextAware
  */
-public class Employee {
+@Component
+public class Employee implements ApplicationContextAware {
+
+    private ApplicationContext applicationContext;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }
