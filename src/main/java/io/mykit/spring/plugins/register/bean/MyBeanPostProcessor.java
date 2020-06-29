@@ -26,20 +26,17 @@ import org.springframework.stereotype.Component;
  * @description 测试BeanPostProcessor
  */
 @Component
-public class MyBeanPostProcessor implements BeanPostProcessor, Ordered {
-
+public class MyBeanPostProcessor implements BeanPostProcessor,Ordered {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("调用了postProcessBeforeInitialization方法，beanName = " + beanName + ", bean = " + bean);
+        System.out.println("postProcessBeforeInitialization..."+beanName+"=>"+bean);
         return bean;
     }
-
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("调用了postProcessAfterInitialization，beanName = " + beanName + ", bean = " + bean);
+        System.out.println("postProcessAfterInitialization..."+beanName+"=>"+bean);
         return bean;
     }
-
     @Override
     public int getOrder() {
         return 3;
