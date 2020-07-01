@@ -13,29 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.mykit.spring.plugins.register.bean;
+package io.mykit.spring.plugins.register.config;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.beans.factory.annotation.Value;
-
-import java.io.Serializable;
+import io.mykit.spring.plugins.register.bean.Person;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author binghe
  * @version 1.0.0
- * @description 测试实体类
+ * @description 测试属性赋值
  */
-@Data
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class Person implements Serializable {
-    private static final long serialVersionUID = 7387479910468805194L;
-    @Value("binghe")
-    private String name;
-    @Value("#{20-2}")
-    private Integer age;
+@Configuration
+public class PropertyValueConfig {
+
+    @Bean
+    public Person person(){
+        return new Person();
+    }
 }
