@@ -32,6 +32,6 @@ public class PersonConfig3 {
     @Bean("person")
     public Person person(){
         System.out.println("给容器中添加Person....");
-        return new Person("binghe002", 18);
+        return new Person("binghe002", 18,"");
     }
 }

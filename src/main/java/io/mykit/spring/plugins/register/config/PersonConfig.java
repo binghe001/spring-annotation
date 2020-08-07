@@ -53,6 +53,6 @@ public class PersonConfig {
 
     @Bean("person")
     public Person person01(){
-        return new Person("binghe001", 18);
+        return new Person("binghe001", 18,"");
     }
 }

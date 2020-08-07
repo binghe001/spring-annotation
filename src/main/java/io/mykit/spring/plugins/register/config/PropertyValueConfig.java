@@ -18,15 +18,16 @@ package io.mykit.spring.plugins.register.config;
 import io.mykit.spring.plugins.register.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author binghe
  * @version 1.0.0
  * @description 测试属性赋值
  */
+@PropertySource(value = {"classpath:person.properties"})
 @Configuration
 public class PropertyValueConfig {
-
     @Bean
     public Person person(){
         return new Person();

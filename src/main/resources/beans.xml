@@ -7,12 +7,11 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/context/spring-context.xsd ">
 
-    <!--<context:component-scan base-package="io.mykit.spring"></context:component-scan>-->
 
+    <context:property-placeholder location="classpath:person.properties"/>
     <bean id = "person" class="io.mykit.spring.plugins.register.bean.Person">
         <property name="name" value="binghe"></property>
         <property name="age" value="18"></property>
+        <property name="nickName" value="${person.nickName}"></property>
     </bean>
-
-    <bean id="student" class="io.mykit.spring.plugins.register.bean.Student" init-method="init" destroy-method="destroy"></bean>
 </beans>

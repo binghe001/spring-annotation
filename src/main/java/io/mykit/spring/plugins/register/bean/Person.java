@@ -19,6 +19,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.Serializable;
@@ -38,4 +39,6 @@ public class Person implements Serializable {
     private String name;
     @Value("#{20-2}")
     private Integer age;
+    @Value("${person.nickName}")
+    private String nickName;
 }

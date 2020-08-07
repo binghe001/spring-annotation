@@ -38,19 +38,19 @@ public class PersonConfig2 {
     @Bean("person")
     public Person person(){
         System.out.println("给容器中添加Person....");
-        return new Person("binghe002", 18);
+        return new Person("binghe002", 18, "");
     }
 
     @Conditional({WindowsCondition.class})
     @Bean("binghe001")
     public Person person01(){
-        return new Person("binghe001", 18);
+        return new Person("binghe001", 18, "");
     }
 
     @Conditional({LinuxCondition.class})
     @Bean("binghe002")
     public Person person02(){
-        return new Person("binghe002", 20);
+        return new Person("binghe002", 20, "");
     }
 
 

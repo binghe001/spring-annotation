@@ -19,6 +19,8 @@ import io.mykit.spring.plugins.register.bean.Person;
 import io.mykit.spring.plugins.register.config.PropertyValueConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
 
@@ -39,5 +41,21 @@ public class PropertyValueTest {
         System.out.println("================================");
         Person person = (Person) context.getBean("person");
         System.out.println(person);
+    }
+
+    @Test
+    public void testPropertyValue02(){
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:beans.xml");
+        Person person = (Person) context.getBean("person");
+        System.out.println(person);
+    }
+
+
+    @Test
+    public void testPropertyValue03(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PropertyValueConfig.class);
+        Environment environment = context.getEnvironment();
+        String nickName = environment.getProperty("person.nickName");
+        System.out.println(nickName);
     }
 }
