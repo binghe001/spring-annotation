@@ -16,7 +16,6 @@
 package io.mykit.spring.test;
 
 import io.mykit.spring.plugins.register.config.AutowiredConfig;
-import io.mykit.spring.plugins.register.dao.PersonDao;
 import io.mykit.spring.plugins.register.service.PersonService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
