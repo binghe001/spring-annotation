@@ -22,7 +22,23 @@ import org.springframework.stereotype.Repository;
  * @version 1.0.0
  * @description 测试的dao
  */
+
 @Repository
 public class PersonDao {
+    private String remark = "1";
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonDao{" +
+                "remark='" + remark + '\'' +
+                '}';
+    }
 }

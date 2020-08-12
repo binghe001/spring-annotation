@@ -13,28 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.mykit.spring.plugins.register.service;
+package io.mykit.spring.test;
 
+import io.mykit.spring.plugins.register.config.AutowiredConfig;
 import io.mykit.spring.plugins.register.dao.PersonDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import io.mykit.spring.plugins.register.service.PersonService;
+import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author binghe
  * @version 1.0.0
- * @description 测试的Service
+ * @description 测试自动装配
  */
-@Service
-public class PersonService {
-    @Qualifier("personDao")
-    @Autowired(required = false)
-    private PersonDao personDao;
+public class AutowiredTest {
 
-    @Override
-    public String toString() {
-        return "PersonService{" +
-                "personDao=" + personDao +
-                '}';
+    @Test
+    public void testAutowired01(){
+        //创建IOC容器
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AutowiredConfig.class);
+        PersonService personService = context.getBean(PersonService.class);
+        System.out.println(personService);
+        context.close();
     }
 }

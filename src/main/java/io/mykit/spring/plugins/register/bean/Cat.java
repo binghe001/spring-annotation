@@ -24,7 +24,6 @@ import javax.annotation.PreDestroy;
  * @description 测试@PostConstruct注解和@PreDestroy注解
  */
 public class Cat {
-
     public Cat(){
         System.out.println("Cat类的构造方法...");
     }
