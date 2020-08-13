@@ -16,9 +16,9 @@
 package io.mykit.spring.plugins.register.service;
 
 import io.mykit.spring.plugins.register.dao.PersonDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import javax.inject.Inject;
 
 /**
  * @author binghe
@@ -27,8 +27,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PersonService {
-    @Qualifier("personDao")
-    @Autowired(required = false)
+    //@Qualifier("personDao")
+    //@Autowired(required = false)
+    //@Resource(name = "personDao2")
+    @Inject
     private PersonDao personDao;
 
     @Override
