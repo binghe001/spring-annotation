@@ -15,37 +15,23 @@
  */
 package io.mykit.spring.plugins.register.bean;
 
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 /**
  * @author binghe
  * @version 1.0.0
- * @description 测试@PostConstruct注解和@PreDestroy注解
+ * @description 测试类
  */
-@Component
-public class Cat {
-    public Cat(){
-        System.out.println("Cat类的构造方法...");
+public class Fish {
+
+    private Cat cat;
+
+    public void setCat(Cat cat) {
+        this.cat = cat;
     }
 
-    public void init(){
-        System.out.println("Cat的init()方法...");
-    }
-
-    @PostConstruct
-    public void postConstruct(){
-        System.out.println("Cat的postConstruct()方法...");
-    }
-
-    @PreDestroy
-    public void preDestroy(){
-        System.out.println("Cat的preDestroy()方法...");
-    }
-
-    public void destroy(){
-        System.out.println("Cat的destroy()方法...");
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "cat=" + cat +
+                '}';
     }
 }

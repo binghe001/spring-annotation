@@ -15,7 +15,10 @@
  */
 package io.mykit.spring.plugins.register.config;
 
+import io.mykit.spring.plugins.register.bean.Cat;
+import io.mykit.spring.plugins.register.bean.Fish;
 import io.mykit.spring.plugins.register.dao.PersonDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +33,8 @@ import org.springframework.context.annotation.Primary;
 @ComponentScan(value = {
         "io.mykit.spring.plugins.register.dao",
         "io.mykit.spring.plugins.register.service",
-        "io.mykit.spring.plugins.register.controller"})
+        "io.mykit.spring.plugins.register.controller",
+        "io.mykit.spring.plugins.register.bean"})
 public class AutowiredConfig {
 
     @Primary
@@ -39,5 +43,12 @@ public class AutowiredConfig {
         PersonDao personDao = new PersonDao();
         personDao.setRemark("2");
         return personDao;
+    }
+
+    @Bean
+    public Fish fish(@Autowired  Cat cat){
+        Fish fish = new Fish();
+        fish.setCat(cat);
+        return fish;
     }
 }

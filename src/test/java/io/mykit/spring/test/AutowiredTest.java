@@ -15,6 +15,9 @@
  */
 package io.mykit.spring.test;
 
+import io.mykit.spring.plugins.register.bean.Cat;
+import io.mykit.spring.plugins.register.bean.Dog;
+import io.mykit.spring.plugins.register.bean.Fish;
 import io.mykit.spring.plugins.register.config.AutowiredConfig;
 import io.mykit.spring.plugins.register.service.PersonService;
 import org.junit.Test;
@@ -31,8 +34,20 @@ public class AutowiredTest {
     public void testAutowired01(){
         //创建IOC容器
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AutowiredConfig.class);
-        PersonService personService = context.getBean(PersonService.class);
-        System.out.println(personService);
+        //PersonService personService = context.getBean(PersonService.class);
+        //System.out.println(personService);
+        Dog dog = context.getBean(Dog.class);
+        System.out.println(dog.toString());
+        Cat cat = context.getBean(Cat.class);
+        System.out.println(cat);
+        context.close();
+    }
+    @Test
+    public void testAutowired02(){
+        //创建IOC容器
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AutowiredConfig.class);
+        Fish fish = context.getBean(Fish.class);
+        System.out.println(fish);
         context.close();
     }
 }
