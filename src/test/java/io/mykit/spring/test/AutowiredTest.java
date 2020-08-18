@@ -19,7 +19,6 @@ import io.mykit.spring.plugins.register.bean.Cat;
 import io.mykit.spring.plugins.register.bean.Dog;
 import io.mykit.spring.plugins.register.bean.Fish;
 import io.mykit.spring.plugins.register.config.AutowiredConfig;
-import io.mykit.spring.plugins.register.service.PersonService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
